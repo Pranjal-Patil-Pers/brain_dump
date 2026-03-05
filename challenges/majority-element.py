@@ -1,18 +1,8 @@
 class Solution():
-    def majorityElement(self,nums):
-        dict1 = {}
-        maxOcc=0
-        me = float("-inf")
-        for num in nums:
-            print(dict1)
-            if num in dict1:
-                dict1[num] = dict1[num]+1
-            else:
-                dict1[num]=1
-            if maxOcc < dict1[num]:
-                maxOcc = dict1[num]
-                me = num
-        return me
+    def majorityElement(self, nums):
+        nums.sort()
+        mid = nums[int(len(nums)/2)]
+        return mid
             
 if __name__== '__main__':
     sol = Solution()
