@@ -1,18 +1,15 @@
 class Solution:
     def isPalindrome(self, x: int) -> bool:
-        if x <0:
+        if x < 0 or( x%10==0 and x!=0):
             return False
-        else:
-            num =x
-            new_num=0
-            
-            while num>0:
-                new_num=(new_num*10)+num%10
-                num=num//10
-            if (new_num)==x:
-                return True
-            else :
-                return False
+        reverse_half =0
+        while x > reverse_half:
+            reverse_half= x%10+reverse_half*10
+            x=x//10
+       
+        return x==reverse_half or x==reverse_half//10
+                
+        
 
 if __name__=="__main__":
   sol = Solution()
