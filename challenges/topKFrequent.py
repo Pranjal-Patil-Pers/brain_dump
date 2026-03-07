@@ -1,17 +1,19 @@
 class Solution:
-    def topKFrequent(self, nums, k) :
-        dict1={}
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        dict1 = {}
         for num in nums:
-            if num in dict1:
-                dict1[num]+=1
-            else:
-                dict1[num]=1
-        dict1 = sorted(dict1.items(), key=lambda x:x[1], reverse = True)
-        list1 = []
-        for i in range(k):
-            list1.append(dict1[i][0])
-        return list1
+            dict1[num] = dict1.get(num,0)+1
+        freq = [[] for _ in range(len(nums)+1)]
+        for val, c in dict1.items():
+            freq[c].append(val)
 
-if __name__ == "__main__":
+        list1 = []
+        for i in range(len(freq)-1,0, -1):
+            for j in freq[i]:
+                list1.append(j)
+                if len(list1)==k:
+                    return list1
+
+if __name__=="__main__":
     sol = Solution()
-    print(sol.topKFrequent([1,1,1,2,2,3],k=2))
+    print(sol.topKFrequent([1,1,1,2,2,2,3,3],k=2)
